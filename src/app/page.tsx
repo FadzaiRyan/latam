@@ -3,7 +3,6 @@
 import { StatCards } from "@/components/application/dashboard/stat-cards";
 import { RevenueChartCard } from "@/components/application/dashboard/revenue-chart-card";
 import { Table } from "@/components/base/table/table";
-import { DataTable } from "@/components/application/data-table/data-table";
 
 // Mock data for the POC
 const mockWeatherData = {
@@ -157,13 +156,13 @@ export default function Home() {
 
         <div>
           <h2 className="text-title-3-medium mb-4">Wind — maximum speed and dominant direction, day by day</h2>
-          <DataTable
+          <Table
             columns={["Day", "Speed (km/h)", "Direction"]}
-            data={mockWeatherData.windData.map((item) => ({
-              day: item.day,
-              speed: item.speed,
-              direction: item.direction,
-            }))}
+            rows={mockWeatherData.windData.map((item) => [
+              item.day,
+              item.speed.toString(),
+              item.direction,
+            ])}
           />
         </div>
       </div>
